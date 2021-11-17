@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../../assets/images/logo.png";
 import "./Header.css";
 
@@ -24,7 +24,7 @@ const Header = () => {
               </ul>
             </div>
             <div className="col-lg-6">
-              <div className="text-lg-right top-right-bar mt-2 mt-lg-0">
+              <div className="text-lg-right top-right-bar d-flex justify-content-end mt-2 mt-lg-0">
                 <a href="tel:+23-345-67890">
                   <span>Call Now : </span>
                   <span className="h4">823-4565-13456</span>
@@ -61,8 +61,8 @@ const Header = () => {
             id="navbarmain"
           >
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
-                <NavLink className="nav-link" to="/">
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/home">
                   Home
                 </NavLink>
               </li>
@@ -82,12 +82,32 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink
-                  className="nav-link btn btn-main-2 btn-round-full"
-                  to="/login"
-                >
+                <NavLink className="nav-link" to="/login">
                   Login
                 </NavLink>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle nav-user-link"
+                  href="/"
+                  id="userDropdown"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Jahid
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                  <li>
+                    <Link class="dropdown-item" to="/dashboard">
+                      Go to dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" to="/">
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
               </li>
             </ul>
           </div>
