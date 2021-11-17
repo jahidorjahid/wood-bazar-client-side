@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../../../assets/images/logo.png";
 
 const Header = () => {
@@ -53,24 +54,24 @@ const Header = () => {
           <div className="collapse navbar-collapse" id="navbarmain">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="index.html">
+                <Link className="nav-link" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="about.html">
+                <Link className="nav-link" to="/shop">
                   Shop
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="service.html">
-                  About
-                </a>
+                <Link className="nav-link" to="/about-us">
+                  About Us
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="contact.html">
-                  Contact
-                </a>
+                <Link className="nav-link" to="/contact-us">
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
