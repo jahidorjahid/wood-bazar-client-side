@@ -26,7 +26,13 @@ const Testimonial = () => {
           <div className="col-lg-12 testimonial-wrap-2 slick-initialized slick-slider slick-dotted">
             <div className="slick-list draggable">
               <div className="slick-track">
-                <Carousel cols={2} rows={1} gap={10} loop={true}>
+                <Carousel
+                  cols={2}
+                  rows={1}
+                  gap={10}
+                  loop={true}
+                  autoplay={5000}
+                >
                   <Carousel.Item>
                     <Review></Review>
                   </Carousel.Item>

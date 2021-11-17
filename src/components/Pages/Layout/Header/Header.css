@@ -1,0 +1,57 @@
+.navbar-toggle .icon-bar {
+  background: #223a66;
+}
+
+#navbarmain .nav-link {
+  font-weight: 600;
+  padding: 15px 15px;
+  color: #222;
+  font-family: "Exo", sans-serif;
+  text-transform: capitalize;
+  font-size: 16px;
+  transition: all 0.25s ease;
+}
+
+#navbarmain .nav-link:hover,
+#navbarmain .active .nav-link {
+  color: #a76643;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.navbar-brand {
+  margin-top: 10px;
+}
+
+.header-top-bar {
+  background: #a76643;
+  font-size: 14px;
+  padding: 10px 0px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: #fff;
+}
+
+.top-bar-info li a {
+  color: #fff;
+  margin-right: 20px;
+}
+
+.top-right-bar a span {
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+
+.top-right-bar a i {
+  color: #fff;
+  margin-right: 10px;
+}
+
+@media (max-width: 992px) {
+  .navigation {
+    text-align: center;
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -19,14 +20,13 @@ const Banner = () => {
                 helps make your home feel lived in, inviting, and finish.
               </p>
               <div className="btn-container ">
-                <a
-                  href="appoinment.html"
-                  target="_blank"
+                <Link
+                  to="/shop"
                   className="btn btn-main-2 btn-icon btn-round-full"
                 >
                   Buy Now
                   <i className="icofont-simple-right ml-2  "></i>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

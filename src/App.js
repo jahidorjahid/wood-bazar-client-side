@@ -16,6 +16,7 @@ function App() {
           <Route exact path="/">
             <Home></Home>
           </Route>
+          {/* Shop  */}
           <Route exact path="/shop">
             <Shop></Shop>
           </Route>

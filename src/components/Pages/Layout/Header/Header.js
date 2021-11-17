@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../../../../assets/images/logo.png";
+import "./Header.css";
 
 const Header = () => {
   return (
@@ -35,9 +36,9 @@ const Header = () => {
       </div>
       <nav className="navbar navbar-expand-lg navigation" id="navbar">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/">
             <img src={logo} alt="" className="img-fluid" />
-          </Link>
+          </NavLink>
 
           <button
             className="navbar-toggler collapsed"
@@ -51,27 +52,42 @@ const Header = () => {
             <span className="icofont-navigation-menu"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarmain">
+          <div
+            className={
+              {
+                /* "collapse navbar-collapse" */
+              }
+            }
+            id="navbarmain"
+          >
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
-                <Link className="nav-link" to="/">
+                <NavLink className="nav-link" to="/">
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/shop">
+                <NavLink className="nav-link" to="/shop">
                   Shop
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about-us">
+                <NavLink className="nav-link" to="/about-us">
                   About Us
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/contact-us">
+                <NavLink className="nav-link" to="/contact-us">
                   Contact Us
-                </Link>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link btn btn-main-2 btn-round-full"
+                  to="/login"
+                >
+                  Login
+                </NavLink>
               </li>
             </ul>
           </div>

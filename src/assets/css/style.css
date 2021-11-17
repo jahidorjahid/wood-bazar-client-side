@@ -65,38 +65,6 @@ p {
   line-height: 30px;
 }
 
-.navbar-toggle .icon-bar {
-  background: #223a66;
-}
-
-input[type="email"],
-input[type="password"],
-input[type="text"],
-input[type="tel"] {
-  box-shadow: none;
-  height: 45px;
-  outline: none;
-  font-size: 14px;
-}
-
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="text"]:focus,
-input[type="tel"]:focus {
-  box-shadow: none;
-  border: 1px solid #223a66;
-}
-
-.form-control {
-  box-shadow: none;
-  border-radius: 0;
-}
-
-.form-control:focus {
-  box-shadow: none;
-  border: 1px solid #223a66;
-}
-
 .py-7 {
   padding: 7rem 0px;
 }
@@ -398,60 +366,6 @@ a:focus {
   }
 }
 
-#navbarmain .nav-link {
-  font-weight: 600;
-  padding: 15px 15px;
-  color: #222;
-  font-family: "Exo", sans-serif;
-  text-transform: capitalize;
-  font-size: 16px;
-  transition: all 0.25s ease;
-}
-
-#navbarmain .nav-link:hover,
-#navbarmain .active .nav-link {
-  color: #a76643;
-}
-
-.dropdown-toggle::after {
-  display: none;
-}
-
-.navbar-brand {
-  margin-top: 10px;
-}
-
-.header-top-bar {
-  background: #a76643;
-  font-size: 14px;
-  padding: 10px 0px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  color: #fff;
-}
-
-.top-bar-info li a {
-  color: #fff;
-  margin-right: 20px;
-}
-
-.top-right-bar a span {
-  color: #fff;
-  font-weight: 600;
-  letter-spacing: 1px;
-  vertical-align: middle;
-}
-
-.top-right-bar a i {
-  color: #fff;
-  margin-right: 10px;
-}
-
-@media (max-width: 992px) {
-  .navigation {
-    text-align: center;
-  }
-}
-
 .letter-spacing {
   letter-spacing: 2px;
 }
@@ -484,15 +398,15 @@ a:focus {
   background: #eff0f3;
 }
 
-.appoinment-content {
+.checkout-content {
   position: relative;
 }
 
-.appoinment-content img {
+.checkout-content img {
   width: 85%;
 }
 
-.appoinment-content .emergency {
+.checkout-content .emergency {
   position: absolute;
   content: "";
   right: 10px;
@@ -501,26 +415,26 @@ a:focus {
   padding: 48px;
 }
 
-.appoinment-content .emergency h2 {
+.checkout-content .emergency h2 {
   color: #fff;
 }
 
-.appoinment-content .emergency i {
+.checkout-content .emergency i {
   margin-right: 10px;
   color: rgba(255, 255, 255, 0.7);
 }
 
-.appoinment-form {
+.checkout-form {
   margin-top: 40px;
 }
 
-.appoinment-form .form-control {
+.checkout-form .form-control {
   background: #f4f9fc;
   height: 55px;
   border-color: rgba(0, 0, 0, 0.05);
 }
 
-.appoinment-form textarea.form-control {
+.checkout-form textarea.form-control {
   height: auto;
 }
 

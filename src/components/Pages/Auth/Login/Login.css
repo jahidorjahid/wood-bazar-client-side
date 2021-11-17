@@ -1,0 +1,43 @@
+.login {
+  background-color: aqua;
+}
+.login-bg {
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  background: url("../../../../assets/images/bg/login.jpg") no-repeat;
+  background-size: cover;
+  min-height: 600px;
+  /* Add the blur effect */
+  /* filter: blur(1px);
+  -webkit-filter: blur(1px); */
+  padding: 20px 10px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+  box-shadow: none;
+  height: 45px;
+  outline: none;
+  font-size: 14px;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus {
+  box-shadow: none;
+  border: 1px solid #223a66;
+}
+
+.form-control {
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #223a66;
+}
