@@ -66,9 +66,9 @@ const Shop = () => {
         </div>
       </section>
 
-      <section class="section service-2">
-        <div class="container">
-          <div class="row gy-5">
+      <section className="section service-2">
+        <div className="container">
+          <div className="row gy-5">
             {products.map((product) => (
               <Product key={product.name} product={product}></Product>
             ))}
