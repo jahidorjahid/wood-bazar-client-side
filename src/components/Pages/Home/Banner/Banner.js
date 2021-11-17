@@ -9,14 +9,14 @@ const Banner = () => {
             <div className="block">
               <div className="divider mb-3"></div>
               <span className="text-uppercase text-sm letter-spacing ">
-                Sofa Collection
+                A commitment of years
               </span>
               <h1 className="mb-3 mt-3">Decor the dreams with wood beauty</h1>
 
               <p className="mb-4 pr-5">
-                A repudiandae ipsam labore ipsa voluptatum quidem quae
-                laudantium quisquam aperiam maiores sunt fugit, deserunt rem
-                suscipit placeat.
+                The furniture in a house resembles the meat and potatoes of a
+                dinner. Our furniture takes up the dominant part of the room and
+                helps make your home feel lived in, inviting, and finish.
               </p>
               <div className="btn-container ">
                 <a
@@ -24,7 +24,7 @@ const Banner = () => {
                   target="_blank"
                   className="btn btn-main-2 btn-icon btn-round-full"
                 >
-                  Make appoinment{" "}
+                  Buy Now
                   <i className="icofont-simple-right ml-2  "></i>
                 </a>
               </div>
