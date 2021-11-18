@@ -18,6 +18,11 @@ const Login = () => {
     console.log("auth error ", authError);
   };
 
+  // handle login with gmail
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(location, history);
+  };
+
   return (
     <section className="main-content">
       <div className="container">
@@ -74,7 +79,7 @@ const Login = () => {
                 </div>
                 <div>
                   <button
-                    onClick={signInWithGoogle}
+                    onClick={handleGoogleSignIn}
                     className="btn btn-google btn-block btn-md my-1"
                   >
                     Google
