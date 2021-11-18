@@ -6,6 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   updateProfile,
   signOut,
 } from "firebase/auth";
@@ -45,6 +46,23 @@ const useFirebase = () => {
         console.log(error);
       })
       .finally(() => setIsLoading(false));
+  };
+
+  // login with email and password
+  const loginUser = async (email, password, location, history) => {
+    // enable loader
+    setIsLoading(true);
+    // processing to signin
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      const destination = location?.state?.from || "/";
+      history.replace(destination);
+      setAuthError("");
+    } catch (error) {
+      setAuthError(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Signin with Google
@@ -93,6 +111,7 @@ const useFirebase = () => {
     authError,
     signInWithGoogle,
     registerUser,
+    loginUser,
     logout,
   };
 };

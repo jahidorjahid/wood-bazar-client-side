@@ -6,7 +6,8 @@ import "./Header.css";
 
 const Header = () => {
   const { user, isLoading, logout } = useAuth();
-
+  console.log("is Loading", isLoading);
+  console.log("user ", user);
   return (
     <header>
       <div className="header-top-bar">

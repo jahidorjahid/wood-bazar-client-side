@@ -1,13 +1,23 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import "./Login.css";
 
 const Login = () => {
-  const { signInWithGoogle } = useAuth();
+  const { isLoading, loginUser, signInWithGoogle, authError } = useAuth();
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const location = useLocation();
+  const history = useHistory();
+
+  // handle login with email, password
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    loginUser(email, password, location, history);
+    console.log("auth error ", authError);
+  };
+
   return (
     <section className="main-content">
       <div className="container">
