@@ -1,5 +1,9 @@
-import "./App.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Home from "./components/Pages/Home/Home/Home";
 import Header from "./components/Pages/Layout/Header/Header";
 import Footer from "./components/Pages/Layout/Footer/Footer";
@@ -7,6 +11,7 @@ import Login from "./components/Pages/Auth/Login/Login";
 import Register from "./components/Pages/Auth/Register/Register";
 import Shop from "./components/Pages/Shop/Shop/Shop";
 import CheckOut from "./components/Pages/CheckOut/CheckOut";
+import ContactUs from "./components/Pages/ContactUs/ContactUs";
 function App() {
   return (
     <div>
@@ -14,8 +19,12 @@ function App() {
         {/* Header  */}
         <Header></Header>
         <Switch>
+          {/* Home  */}
           <Route exact path="/">
             <Home></Home>
+          </Route>
+          <Route exact path="/home">
+            <Redirect to="/"></Redirect>
           </Route>
           {/* Shop  */}
           <Route exact path="/shop">
@@ -23,6 +32,14 @@ function App() {
           </Route>
           {/* Checkout  */}
           <Route exact path="/checkout">
+            <CheckOut></CheckOut>
+          </Route>
+          {/* Checkout  */}
+          <Route exact path="/contact-us">
+            <ContactUs></ContactUs>
+          </Route>
+          {/* Checkout  */}
+          <Route exact path="/about-us">
             <CheckOut></CheckOut>
           </Route>
           {/* Login  */}
