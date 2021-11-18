@@ -17,31 +17,39 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        {/* Header  */}
-        <Header></Header>
         <Switch>
           {/* Home  */}
           <Route exact path="/">
+            <Header></Header>
             <Home></Home>
+            <Footer></Footer>
           </Route>
           <Route exact path="/home">
             <Redirect to="/"></Redirect>
           </Route>
           {/* Shop  */}
           <Route exact path="/shop">
+            <Header></Header>
             <Shop></Shop>
+            <Footer></Footer>
           </Route>
           {/* Checkout  */}
-          <Route exact path="/checkout">
+          <Route exact path="/checkout/:oder?productId">
+            <Header></Header>
             <CheckOut></CheckOut>
+            <Footer></Footer>
           </Route>
           {/* Checkout  */}
           <Route exact path="/contact-us">
+            <Header></Header>
             <ContactUs></ContactUs>
+            <Footer></Footer>
           </Route>
           {/* Checkout  */}
           <Route exact path="/about-us">
+            <Header></Header>
             <CheckOut></CheckOut>
+            <Footer></Footer>
           </Route>
           {/* Login  */}
           <Route exact path="/login">
@@ -51,9 +59,14 @@ function App() {
           <Route exact path="/register">
             <Register></Register>
           </Route>
+          {/* admin panel route  */}
+          <Route exact path="/dashboard">
+            <h1>this is admin dashboard</h1>
+          </Route>
+          <Route exact path="*">
+            <h1>404 Not Found</h1>
+          </Route>
         </Switch>
-        {/* Footer */}
-        <Footer></Footer>
       </Router>
     </AuthProvider>
   );
