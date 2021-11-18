@@ -1,13 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../../assets/images/logo.png";
 import useAuth from "../../../../hooks/useAuth";
 import "./Header.css";
 
 const Header = () => {
-  const { user, isLoading, logout } = useAuth();
-  console.log("is Loading", isLoading);
-  console.log("user ", user);
+  const { user, logout } = useAuth();
+  const [navExpand, setNavExpand] = useState(false);
+
+  const navToggler = () => {
+    setNavExpand(!navExpand);
+  };
+
   return (
     <header>
       <div className="header-top-bar">
@@ -43,24 +48,16 @@ const Header = () => {
           <NavLink className="navbar-brand" to="/">
             <img src={logo} alt="" className="img-fluid" />
           </NavLink>
-
-          <button
-            className="navbar-toggler collapsed"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarmain"
-            aria-controls="navbarmain"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <div className="d-flex flex-lg-column-reverse"></div>
+          <button className="navbar-toggler" type="button" onClick={navToggler}>
             <span className="icofont-navigation-menu"></span>
           </button>
 
           <div
             className={
-              {
-                /* "collapse navbar-collapse" */
-              }
+              navExpand
+                ? "collapse navbar-collapse show"
+                : "collapse navbar-collapse justify-content-lg-end"
             }
             id="navbarmain"
           >
