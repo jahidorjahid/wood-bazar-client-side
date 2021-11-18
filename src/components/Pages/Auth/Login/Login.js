@@ -23,22 +23,16 @@ const Login = () => {
                 <label for="email">Email</label>
                 <input
                   type="email"
-                  className="form-control form-control-lg"
-                  name=""
-                  id="email"
-                  aria-describedby="helpId"
-                  placeholder=""
+                  className="form-control form-control"
+                  placeholder="admin@admin.com"
                 />
               </div>
               <div className="form-group">
                 <label for="password">Password</label>
                 <input
                   type="password"
-                  className="form-control form-control-lg"
-                  name=""
-                  id="password"
-                  aria-describedby="helpId"
-                  placeholder=""
+                  className="form-control form-control"
+                  placeholder="123456"
                 />
                 <Link to="/forgot">Forgot password?</Link>
               </div>

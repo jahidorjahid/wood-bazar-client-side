@@ -22,24 +22,24 @@ const Register = () => {
                 <label for="email">Full Name</label>
                 <input
                   type="name"
-                  className="form-control form-control-lg"
-                  placeholder=""
+                  className="form-control form-control"
+                  placeholder="John Due"
                 />
               </div>
               <div className="form-group">
                 <label for="email">Email</label>
                 <input
                   type="email"
-                  className="form-control form-control-lg"
-                  placeholder=""
+                  className="form-control form-control"
+                  placeholder="john@email.com"
                 />
               </div>
               <div className="form-group">
                 <label for="password">Password</label>
                 <input
                   type="password"
-                  className="form-control form-control-lg"
-                  placeholder=""
+                  className="form-control form-control"
+                  placeholder="password"
                 />
               </div>
               <button className="btn btn-main-2 btn-round-full my-4 btn-block btn-lg">

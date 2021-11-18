@@ -6,6 +6,7 @@ import Footer from "./components/Pages/Layout/Footer/Footer";
 import Login from "./components/Pages/Auth/Login/Login";
 import Register from "./components/Pages/Auth/Register/Register";
 import Shop from "./components/Pages/Shop/Shop/Shop";
+import CheckOut from "./components/Pages/CheckOut/CheckOut";
 function App() {
   return (
     <div>
@@ -19,6 +20,10 @@ function App() {
           {/* Shop  */}
           <Route exact path="/shop">
             <Shop></Shop>
+          </Route>
+          {/* Checkout  */}
+          <Route exact path="/checkout">
+            <CheckOut></CheckOut>
           </Route>
           {/* Login  */}
           <Route exact path="/login">

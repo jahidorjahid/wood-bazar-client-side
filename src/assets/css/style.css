@@ -785,11 +785,11 @@ a:focus {
   }
 }
 
-.contact-form-wrap .form-group {
+.form-group {
   margin-bottom: 20px;
 }
 
-.contact-form-wrap .form-group .form-control {
+.form-group .form-control {
   height: 60px;
   border: 1px solid #eef2f6;
   box-shadow: none;
@@ -797,11 +797,11 @@ a:focus {
   background: #f4f9fc;
 }
 
-.contact-form-wrap .form-group-2 {
+.form-group-2 {
   margin-bottom: 13px;
 }
 
-.contact-form-wrap .form-group-2 textarea {
+.form-group-2 textarea {
   height: auto;
   border: 1px solid #eef2f6;
   box-shadow: none;
