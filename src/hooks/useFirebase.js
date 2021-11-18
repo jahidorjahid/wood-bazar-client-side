@@ -5,6 +5,8 @@ import {
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
+  createUserWithEmailAndPassword,
+  updateProfile,
   signOut,
 } from "firebase/auth";
 
@@ -19,6 +21,33 @@ const useFirebase = () => {
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
+  // register with email and password
+  const registerUser = (email, password, name, history) => {
+    // enable loader
+    setIsLoading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setAuthError("");
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+        // save user to the database
+
+        // send name to firebase after creation
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {})
+          .catch((error) => {});
+        history.replace("/dashboard");
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+        console.log(error);
+      })
+      .finally(() => setIsLoading(false));
+  };
+
+  // Signin with Google
   const signInWithGoogle = (location, history) => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
@@ -63,6 +92,7 @@ const useFirebase = () => {
     isLoading,
     authError,
     signInWithGoogle,
+    registerUser,
     logout,
   };
 };

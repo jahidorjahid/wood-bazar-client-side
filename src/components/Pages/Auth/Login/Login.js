@@ -1,10 +1,13 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import "./Login.css";
 
 const Login = () => {
   const { signInWithGoogle } = useAuth();
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => console.log(data);
   return (
     <section className="main-content">
       <div className="container">
@@ -21,26 +24,32 @@ const Login = () => {
               <h3 className="text-center text-uppercase mb-3 form-title ">
                 Login WoodBazar
               </h3>
-              <div className="form-group">
-                <label for="email">Email</label>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    className="form-control form-control"
+                    placeholder="admin@admin.com"
+                    {...register("email", { required: true })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    className="form-control form-control"
+                    placeholder="123456"
+                    {...register("password", { required: true })}
+                  />
+                  <Link to="/forgot">Forgot password?</Link>
+                </div>
                 <input
-                  type="email"
-                  className="form-control form-control"
-                  placeholder="admin@admin.com"
+                  type="submit"
+                  value="Login"
+                  className="btn btn-main-2 btn-round-full my-4 btn-block btn-lg"
                 />
-              </div>
-              <div className="form-group">
-                <label for="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control form-control"
-                  placeholder="123456"
-                />
-                <Link to="/forgot">Forgot password?</Link>
-              </div>
-              <button className="btn btn-main-2 btn-round-full my-4 btn-block btn-lg">
-                Login
-              </button>
+              </form>
               <p className="text-muted text-center">
                 New to our platform? <Link to="/register">Register</Link>
               </p>

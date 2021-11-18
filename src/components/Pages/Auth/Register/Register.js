@@ -1,7 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { Link, useHistory } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
 
 const Register = () => {
+  const { signInWithGoogle, registerUser } = useAuth();
+  const { register, handleSubmit } = useForm();
+  const history = useHistory();
+
+  // handle user registration process
+  const onSubmit = (data) => {
+    // test log
+    console.log(data);
+    const { email, password, name } = data;
+    // create new user
+    registerUser(email, password, name, history);
+  };
+
   return (
     <section className="main-content">
       <div className="container">
@@ -18,33 +33,40 @@ const Register = () => {
               <h3 className="text-center text-uppercase mb-3 form-title ">
                 Signin WoodBazar
               </h3>
-              <div className="form-group">
-                <label for="email">Full Name</label>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group">
+                  <label for="email">Full Name</label>
+                  <input
+                    type="name"
+                    className="form-control form-control"
+                    placeholder="John Due"
+                    {...register("name", { required: true })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="email">Email</label>
+                  <input
+                    type="email"
+                    className="form-control form-control"
+                    placeholder="john@email.com"
+                    {...register("email", { required: true })}
+                  />
+                </div>
+                <div className="form-group">
+                  <label for="password">Password</label>
+                  <input
+                    type="password"
+                    className="form-control form-control"
+                    placeholder="password"
+                    {...register("password", { required: true })}
+                  />
+                </div>
                 <input
-                  type="name"
-                  className="form-control form-control"
-                  placeholder="John Due"
+                  type="submit"
+                  value="Register"
+                  className="btn btn-main-2 btn-round-full my-4 btn-block btn-lg"
                 />
-              </div>
-              <div className="form-group">
-                <label for="email">Email</label>
-                <input
-                  type="email"
-                  className="form-control form-control"
-                  placeholder="john@email.com"
-                />
-              </div>
-              <div className="form-group">
-                <label for="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control form-control"
-                  placeholder="password"
-                />
-              </div>
-              <button className="btn btn-main-2 btn-round-full my-4 btn-block btn-lg">
-                Register
-              </button>
+              </form>
               <p className="text-muted text-center">
                 Already have an account? <Link to="/login">Login</Link>
               </p>
@@ -58,7 +80,10 @@ const Register = () => {
                   </button>
                 </div>
                 <div>
-                  <button className="btn btn-google btn-block btn-md my-1">
+                  <button
+                    onClick={signInWithGoogle}
+                    className="btn btn-google btn-block btn-md my-1"
+                  >
                     Google
                   </button>
                 </div>
