@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
 import "./Login.css";
 
 const Login = () => {
+  const { signInWithGoogle } = useAuth();
   return (
     <section className="main-content">
       <div className="container">
@@ -52,7 +54,10 @@ const Login = () => {
                   </button>
                 </div>
                 <div>
-                  <button className="btn btn-google btn-block btn-md my-1">
+                  <button
+                    onClick={signInWithGoogle}
+                    className="btn btn-google btn-block btn-md my-1"
+                  >
                     Google
                   </button>
                 </div>

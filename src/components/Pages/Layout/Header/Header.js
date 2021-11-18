@@ -1,9 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../../assets/images/logo.png";
+import useAuth from "../../../../hooks/useAuth";
 import "./Header.css";
 
 const Header = () => {
+  const { user, isLoading, logout } = useAuth();
+
   return (
     <header>
       <div className="header-top-bar">
@@ -81,34 +84,37 @@ const Header = () => {
                   Contact Us
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/login">
-                  Login
-                </NavLink>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle nav-user-link"
-                  href="/"
-                  id="userDropdown"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Jahid
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                  <li>
-                    <Link class="dropdown-item" to="/dashboard">
-                      Go to dashboard
-                    </Link>
-                  </li>
-                  <li>
-                    <Link class="dropdown-item" to="/">
-                      Logout
-                    </Link>
-                  </li>
-                </ul>
-              </li>
+              {user?.email ? (
+                <li class="nav-item dropdown">
+                  <Link
+                    class="nav-link dropdown-toggle nav-user-link"
+                    to="/dashboard"
+                    id="userDropdown"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    {user?.displayName}
+                  </Link>
+                  <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li>
+                      <Link class="dropdown-item" to="/dashboard">
+                        Go to dashboard
+                      </Link>
+                    </li>
+                    <li>
+                      <Link onClick={logout} class="dropdown-item" to="/">
+                        Logout
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+              ) : (
+                <li className="nav-item">
+                  <NavLink className="nav-link" to="/login">
+                    Login
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </div>

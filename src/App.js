@@ -12,9 +12,10 @@ import Register from "./components/Pages/Auth/Register/Register";
 import Shop from "./components/Pages/Shop/Shop/Shop";
 import CheckOut from "./components/Pages/CheckOut/CheckOut";
 import ContactUs from "./components/Pages/ContactUs/ContactUs";
+import AuthProvider from "./contexts/AuthProvider/AuthProvider";
 function App() {
   return (
-    <div>
+    <AuthProvider>
       <Router>
         {/* Header  */}
         <Header></Header>
@@ -54,7 +55,7 @@ function App() {
         {/* Footer */}
         <Footer></Footer>
       </Router>
-    </div>
+    </AuthProvider>
   );
 }
 
