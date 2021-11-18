@@ -35,7 +35,7 @@ const Register = () => {
               </h3>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                  <label for="email">Full Name</label>
+                  <label htmlFor="email">Full Name</label>
                   <input
                     type="name"
                     className="form-control form-control"
@@ -44,7 +44,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="email">Email</label>
+                  <label htmlFor="email">Email</label>
                   <input
                     type="email"
                     className="form-control form-control"
@@ -53,7 +53,7 @@ const Register = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="password">Password</label>
+                  <label htmlFor="password">Password</label>
                   <input
                     type="password"
                     className="form-control form-control"

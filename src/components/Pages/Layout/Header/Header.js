@@ -85,9 +85,9 @@ const Header = () => {
                 </NavLink>
               </li>
               {user?.email ? (
-                <li class="nav-item dropdown">
+                <li className="nav-item dropdown">
                   <Link
-                    class="nav-link dropdown-toggle nav-user-link"
+                    className="nav-link dropdown-toggle nav-user-link"
                     to="/dashboard"
                     id="userDropdown"
                     data-toggle="dropdown"
@@ -95,14 +95,14 @@ const Header = () => {
                   >
                     {user?.displayName}
                   </Link>
-                  <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                  <ul className="dropdown-menu" aria-labelledby="userDropdown">
                     <li>
-                      <Link class="dropdown-item" to="/dashboard">
+                      <Link className="dropdown-item" to="/dashboard">
                         Go to dashboard
                       </Link>
                     </li>
                     <li>
-                      <Link onClick={logout} class="dropdown-item" to="/">
+                      <Link onClick={logout} className="dropdown-item" to="/">
                         Logout
                       </Link>
                     </li>

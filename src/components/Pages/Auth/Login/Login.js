@@ -26,7 +26,7 @@ const Login = () => {
               </h3>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">
-                  <label for="email">Email</label>
+                  <label htmlFor="email">Email</label>
                   <input
                     type="email"
                     className="form-control form-control"
@@ -35,7 +35,7 @@ const Login = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="password">Password</label>
+                  <label htmlFor="password">Password</label>
                   <input
                     type="password"
                     className="form-control form-control"
