@@ -10,6 +10,9 @@ import {
   updateProfile,
   signOut,
 } from "firebase/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 // initialize firebase app
 initializeFirebase();
@@ -31,19 +34,22 @@ const useFirebase = () => {
         setAuthError("");
         const newUser = { email, displayName: name };
         setUser(newUser);
+        toast.success("Account Created Successfully!");
         // save user to the database
-
+        saveUser(email, name, "POST");
         // send name to firebase after creation
         updateProfile(auth.currentUser, {
           displayName: name,
         })
           .then(() => {})
-          .catch((error) => {});
-        history.replace("/dashboard");
+          .catch((error) => {
+            toast.error(error.message);
+          });
+        history.replace("/");
       })
       .catch((error) => {
         setAuthError(error.message);
-        console.log(error);
+        toast.error(error.message);
       })
       .finally(() => setIsLoading(false));
   };
@@ -58,8 +64,10 @@ const useFirebase = () => {
       const destination = location?.state?.from || "/";
       history.replace(destination);
       setAuthError("");
+      toast.success("Login Success!");
     } catch (error) {
       setAuthError(error.message);
+      toast.error(error.message);
     } finally {
       setIsLoading(false);
     }
@@ -70,12 +78,17 @@ const useFirebase = () => {
     setIsLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
+        const user = result.user;
         setAuthError("");
+        // upsert the user into database
+        saveUser(user.email, user.displayName, "PUT");
         const destination = location?.state?.from || "/";
         history.replace(destination);
+        toast.success("Welcome! " + user.displayName);
       })
       .catch((error) => {
         setAuthError(error.message);
+        toast.error("Login Failed!");
       })
       .finally(() => setIsLoading(false));
   };
@@ -93,21 +106,37 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
+  // logout method
   const logout = () => {
     setIsLoading(true);
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+        toast.success("Logged out success!");
       })
       .catch((error) => {
         // An error happened.
+        toast.error("Login Failed!");
       })
       .finally(() => setIsLoading(false));
+  };
+
+  // save user to database
+  const saveUser = (email, displayName, method) => {
+    const user = { email, displayName };
+    fetch("http://localhost:8000/api/users", {
+      method: method,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    }).then();
   };
 
   return {
     user,
     isLoading,
+    setIsLoading,
     authError,
     signInWithGoogle,
     registerUser,
