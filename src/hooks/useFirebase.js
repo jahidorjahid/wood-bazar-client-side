@@ -112,6 +112,7 @@ const useFirebase = () => {
       .then((res) => res.json())
       .then((data) => {
         setAdmin(data.admin);
+        setIsLoading(false);
       });
   }, [user.email]);
 

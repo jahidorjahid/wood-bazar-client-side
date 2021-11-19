@@ -1,3 +1,5 @@
+// http://localhost:8000/api/orders
+
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "../Dashboard/Table.css";
@@ -5,41 +7,18 @@ import "../Dashboard/Table.css";
 import swal from "sweetalert";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useAuth from "../../../hooks/useAuth";
 toast.configure();
 
 const Orders = () => {
+  const { user } = useAuth();
   const [orders, setOrders] = useState([]);
-
-  // handle update order status
-  const updateOrderStatus = (productId, status) => {
-    swal({
-      title: "Are you sure?",
-      text: "You want to change Order status!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        axios
-          .put("https://woodbazar.herokuapp.com/api/orders", {
-            _id: productId,
-            status,
-          })
-          .then(() => {
-            toast.success("Order status updated!");
-            axios
-              .get("https://woodbazar.herokuapp.com/api/orders")
-              .then((res) => setOrders(res.data.orders));
-          });
-      }
-    });
-  };
 
   useEffect(() => {
     axios
-      .get("https://woodbazar.herokuapp.com/api/orders")
+      .get(`https://woodbazar.herokuapp.com/api/orders${user.email}`)
       .then((res) => setOrders(res.data.orders));
-  }, []);
+  }, [user.email]);
 
   return (
     <div className="container-xl">
@@ -62,8 +41,6 @@ const Orders = () => {
                 <th>Location</th>
                 <th>Order Date</th>
                 <th>Status</th>
-                <th>Price</th>
-                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -82,25 +59,6 @@ const Orders = () => {
                     {order.status}
                   </td>
                   <td>${order.productPrice}</td>
-                  <td>
-                    {order.status === "pending" ? (
-                      <button
-                        onClick={() => updateOrderStatus(order._id, "shipped")}
-                        type="button"
-                        className="btn bg-success btn-sm text-white"
-                      >
-                        confirm?
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => updateOrderStatus(order._id, "pending")}
-                        type="button"
-                        className="btn bg-danger btn-sm text-white"
-                      >
-                        cencel?
-                      </button>
-                    )}
-                  </td>
                 </tr>
               ))}
             </tbody>
