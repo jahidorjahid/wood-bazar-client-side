@@ -4,14 +4,19 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Product from "../Product/Product";
 import "./Shop.css";
+import Loader from "react-js-loader";
+import useAuth from "../../../../hooks/useAuth";
 
 const Shop = () => {
+  const { isLoading, setIsLoading } = useAuth();
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/products")
-      .then((res) => setProducts(res.data.products));
+    setIsLoading(true);
+    axios.get("http://localhost:8000/api/products").then((res) => {
+      setProducts(res.data.products);
+      setIsLoading(false);
+    });
   }, []);
   return (
     <>
@@ -47,9 +52,19 @@ const Shop = () => {
       <section className="section service-2">
         <div className="container">
           <div className="row gy-5">
-            {products.map((product) => (
-              <Product key={product._id} product={product}></Product>
-            ))}
+            {isLoading ? (
+              <Loader
+                type="bubble-top"
+                bgColor={"#a76643"}
+                color={"#a76643"}
+                title={"Loading"}
+                size={100}
+              />
+            ) : (
+              products.map((product) => (
+                <Product key={product._id} product={product}></Product>
+              ))
+            )}
           </div>
         </div>
       </section>
