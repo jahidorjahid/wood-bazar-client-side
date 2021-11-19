@@ -1,38 +1,20 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import useAuth from "../../../../hooks/useAuth";
 import Product from "../../Shop/Product/Product";
-const products = [
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-];
+import Loader from "react-js-loader";
+
 const Products = () => {
+  const { isLoading, setIsLoading } = useAuth();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    axios.get("http://localhost:8000/api/products").then((res) => {
+      setProducts(res.data.products);
+      setIsLoading(false);
+    });
+  }, []);
   return (
     <section className="section service-2">
       <div className="container">
@@ -43,9 +25,19 @@ const Products = () => {
           </div>
         </div>
         <div className="row gy-5">
-          {products.map((product) => (
-            <Product key={product.name} product={product}></Product>
-          ))}
+          {isLoading ? (
+            <Loader
+              type="bubble-top"
+              bgColor={"#a76643"}
+              color={"#a76643"}
+              title={"Loading"}
+              size={100}
+            />
+          ) : (
+            products.map((product) => (
+              <Product key={product._id} product={product}></Product>
+            ))
+          )}
         </div>
       </div>
     </section>
