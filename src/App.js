@@ -13,6 +13,9 @@ import Shop from "./components/Pages/Shop/Shop/Shop";
 import CheckOut from "./components/Pages/CheckOut/CheckOut";
 import ContactUs from "./components/Pages/ContactUs/ContactUs";
 import AuthProvider from "./contexts/AuthProvider/AuthProvider";
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
+import TestLoader from "./TestLoader";
+import PrivateRoute from "./components/Pages/PrivateRoute/PrivateRoute";
 function App() {
   return (
     <AuthProvider>
@@ -34,11 +37,11 @@ function App() {
             <Footer></Footer>
           </Route>
           {/* Checkout  */}
-          <Route exact path="/checkout/:oder?productId">
+          <PrivateRoute exact path="/checkout/:productId">
             <Header></Header>
             <CheckOut></CheckOut>
             <Footer></Footer>
-          </Route>
+          </PrivateRoute>
           {/* Checkout  */}
           <Route exact path="/contact-us">
             <Header></Header>
@@ -61,7 +64,10 @@ function App() {
           </Route>
           {/* admin panel route  */}
           <Route exact path="/dashboard">
-            <h1>this is admin dashboard</h1>
+            <Dashboard></Dashboard>
+          </Route>
+          <Route exact path="/loader">
+            <TestLoader></TestLoader>
           </Route>
           <Route exact path="*">
             <h1>404 Not Found</h1>
