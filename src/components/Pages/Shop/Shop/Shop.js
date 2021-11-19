@@ -1,40 +1,18 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Product from "../Product/Product";
 import "./Shop.css";
-const products = [
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-  {
-    name: "this is our product",
-    description:
-      "this is our description for product is our nice and awsome hahaha",
-  },
-];
+
 const Shop = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/products")
+      .then((res) => setProducts(res.data.products));
+  }, []);
   return (
     <>
       <section className="page-title shop-bg">
@@ -70,7 +48,7 @@ const Shop = () => {
         <div className="container">
           <div className="row gy-5">
             {products.map((product) => (
-              <Product key={product.name} product={product}></Product>
+              <Product key={product._id} product={product}></Product>
             ))}
           </div>
         </div>

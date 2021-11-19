@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  const { name, description } = product;
+  const { _id, name, price, description } = product;
   return (
     <div className="col-lg-4 col-md-6 col-sm-6">
       <div className="shop-block">
@@ -15,8 +16,10 @@ const Product = ({ product }) => {
           <p className="mb-4">{description}</p>
         </div>
         <div className="d-flex justify-content-between">
-          <span>Price: 345$</span>
-          <button className="btn">Buy Now</button>
+          <span>Price: {price}$</span>
+          <Link to={`/checkout/${_id}`} className="btn">
+            Buy Now
+          </Link>
         </div>
       </div>
     </div>
