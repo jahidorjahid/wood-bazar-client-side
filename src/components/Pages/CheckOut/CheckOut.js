@@ -5,6 +5,9 @@ import { Link, useParams } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import Product from "../Shop/Product/Product";
 import Loader from "react-js-loader";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
 const CheckOut = () => {
   const { productId } = useParams();
@@ -16,14 +19,16 @@ const CheckOut = () => {
   const onSubmit = (data) => {
     setIsLoading(true);
     axios
-      .post(`http://localhost:8000/api/orders`, {
+      .post(`https://woodbazar.herokuapp.com/api/orders`, {
         customerEmail: user.email,
         productId: product._id,
+        productPrice: product.price,
         customerCounty: data.country,
         customerCity: data.city,
       })
       .then((res) => {
         console.log(res.data);
+        toast.success("Order Submitted!");
       })
       .finally(() => {
         setIsLoading(false);
@@ -34,7 +39,7 @@ const CheckOut = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/products/${productId}`)
+      .get(`https://woodbazar.herokuapp.com/api/products/${productId}`)
       .then((res) => setProduct(res.data.product));
   }, [productId]);
 
@@ -117,6 +122,7 @@ const CheckOut = () => {
                       <div className="col-lg-6">
                         <div className="form-group">
                           <input
+                            readOnly
                             type="email"
                             className="form-control"
                             placeholder="Email Address"

@@ -4,9 +4,10 @@ import useAuth from "../../../hooks/useAuth";
 import Loader from "react-js-loader";
 import "./Loader.css";
 
-const PrivateRoute = ({ children, ...rest }) => {
-  const { user, isLoading } = useAuth();
+const AdminRoute = ({ children, ...rest }) => {
+  const { user, isLoading, admin } = useAuth();
   const isLoggedIn = user?.email ? true : false;
+  console.log("admin is ", admin);
 
   if (isLoading) {
     return (
@@ -28,12 +29,12 @@ const PrivateRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        isLoggedIn ? (
+        isLoggedIn && admin ? (
           children
         ) : (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: "/dashboard",
               state: { from: location },
             }}
           ></Redirect>
@@ -43,4 +44,4 @@ const PrivateRoute = ({ children, ...rest }) => {
   );
 };
 
-export default PrivateRoute;
+export default AdminRoute;

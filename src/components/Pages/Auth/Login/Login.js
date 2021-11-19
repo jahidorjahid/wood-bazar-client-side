@@ -15,7 +15,6 @@ const Login = () => {
   const onSubmit = (data) => {
     const { email, password } = data;
     loginUser(email, password, location, history);
-    console.log("auth error ", authError);
   };
 
   // handle login with gmail
@@ -36,8 +35,8 @@ const Login = () => {
           </div>
           <div className="login-body">
             <div className="login-body-wrapper mx-auto">
-              <h3 className="text-center text-uppercase mb-3 form-title ">
-                Login WoodBazar
+              <h3 className="text-center text-uppercase mb-3 pb-2 form-title ">
+                Login <Link to="/">WoodBazar</Link>
               </h3>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">

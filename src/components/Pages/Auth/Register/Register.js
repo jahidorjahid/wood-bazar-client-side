@@ -31,7 +31,7 @@ const Register = () => {
           <div className="login-body">
             <div className="login-body-wrapper mx-auto">
               <h3 className="text-center text-uppercase mb-3 form-title ">
-                Signin WoodBazar
+                Signin <Link to="/">WoodBazar</Link>
               </h3>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-group">

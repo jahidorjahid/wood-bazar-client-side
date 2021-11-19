@@ -63,9 +63,9 @@ function App() {
             <Register></Register>
           </Route>
           {/* admin panel route  */}
-          <Route exact path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
-          </Route>
+          </PrivateRoute>
           <Route exact path="/loader">
             <TestLoader></TestLoader>
           </Route>

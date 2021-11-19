@@ -21,6 +21,7 @@ const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
+  const [admin, setAdmin] = useState(false);
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
@@ -101,10 +102,18 @@ const useFirebase = () => {
       } else {
         setUser({});
       }
-      setIsLoading(false);
     });
     return () => unsubscribed;
   }, [auth]);
+
+  // check admin
+  useEffect(() => {
+    fetch(`https://woodbazar.herokuapp.com/api/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAdmin(data.admin);
+      });
+  }, [user.email]);
 
   // logout method
   const logout = () => {
@@ -124,7 +133,7 @@ const useFirebase = () => {
   // save user to database
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("http://localhost:8000/api/users", {
+    fetch("https://woodbazar.herokuapp.com/api/users", {
       method: method,
       headers: {
         "content-type": "application/json",
@@ -142,6 +151,7 @@ const useFirebase = () => {
     registerUser,
     loginUser,
     logout,
+    admin,
   };
 };
 

@@ -10,7 +10,7 @@ const Products = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get("http://localhost:8000/api/products").then((res) => {
+    axios.get("https://woodbazar.herokuapp.com/api/products").then((res) => {
       setProducts(res.data.products);
       setIsLoading(false);
     });
