@@ -7,7 +7,7 @@ import Users from "../Users/Users";
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, admin } = useAuth();
   const { path, url } = useRouteMatch();
 
   return (

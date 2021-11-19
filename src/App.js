@@ -48,12 +48,6 @@ function App() {
             <ContactUs></ContactUs>
             <Footer></Footer>
           </Route>
-          {/* Checkout  */}
-          <Route exact path="/about-us">
-            <Header></Header>
-            <CheckOut></CheckOut>
-            <Footer></Footer>
-          </Route>
           {/* Login  */}
           <Route exact path="/login">
             <Login></Login>
